@@ -1,3 +1,8 @@
 {
-  "java.project.sourcePaths": ["Expressions Assignment/src", "ASCIIArt/src"]
+  "java.project.sourcePaths": [
+    "RockPaperScissors /src",
+    "Expressions Assignment/src",
+    "ASCIIArt/src",
+    "RockPaperScissorsImproved/src"
+  ]
 }
