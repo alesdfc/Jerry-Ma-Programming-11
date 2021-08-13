@@ -9,18 +9,35 @@ public class IntegerSetTests {
     IntegerSet testSet;
 
     @Before
-    public void setup(){
+    public void setup() {
         testSet = new IntegerSet();
     }
 
     @Test
-    public void testInsertNotThere(){
-        //check number is not already in set
+    public void testInsertNotThere() {
+        // check number is not already in set
         assertEquals(testSet.size(), 0);
         assertFalse(testSet.contains(3));
-        //insert a number
+        // insert a number
         testSet.insert(3);
-        //check the number is in the set
+        // check the number is in the set
+        assertEquals(testSet.size(), 1);
+        assertTrue(testSet.contains(3));
+    }
+
+    @Test
+    public void testInsertAlreadyThere() {
+        // insert a number
+        testSet.insert(3);
+
+        // check if number is in the set
+        assertEquals(testSet.size(), 1);
+        assertTrue(testSet.contains(3));
+
+        // insert the same number number
+        testSet.insert(3);
+
+        // check to confirm only 1 occurence
         assertEquals(testSet.size(), 1);
         assertTrue(testSet.contains(3));
     }
