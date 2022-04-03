@@ -37,7 +37,7 @@ public class IntegerSetTests {
         // insert the same number number
         testSet.insert(3);
 
-        // check to confirm only 1 occurence
+        // check to confirm only 1 occurrence
         assertEquals(testSet.size(), 1);
         assertTrue(testSet.contains(3));
     }

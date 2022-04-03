@@ -19,6 +19,7 @@ public class Main {
                 answer++;
             }
         }
+        System.out.println("Number of vowels: " + answer);
         return answer;
     }
 
@@ -40,6 +41,7 @@ public class Main {
                 }
             }
         }
+        System.out.println("Number of times bob occurs is: " + answer);
         return answer;
     }
 
@@ -85,59 +87,7 @@ public class Main {
                 startIndex = i;
             }
         }
+        System.out.println("Longest substring in alphabetical order is: " + longestSubstring);
         return longestSubstring;
-    }
-
-    static String problemFive(String s) {
-        int length = s.length();
-        String palindrome = "";
-        for (int i = 0; i < length * 2 - 1; i++) {
-            int condition = 0;
-            if (i % 2 == 0) {
-                for (int j = 1; j <= Math.min((i / 2), length - 1 - (i / 2)); j++) {
-                    if (s.charAt((i / 2) - j) != s.charAt((i / 2) + j)) {
-                        break;
-                    }
-                    condition = j;
-                }
-                System.out.println(s.substring((i / 2) - condition, (i / 2) + condition + 1));
-                if (palindrome.length() < 2 * condition + 1) {
-                    palindrome = s.substring((i / 2) - condition, (i / 2) + condition + 1);
-                }
-            } else {
-                int temp = (i / 2) + 1;
-                for (int j = 0; j < Math.min(length - temp, temp); j++) {
-                    if (s.charAt(temp - j - 1) != s.charAt(temp + j)) {
-                        break;
-                    }
-                    condition = j + 1;
-                }
-                System.out.println(s.substring(temp - condition, temp + condition));
-                if (palindrome.length() < 2 * condition) {
-                    palindrome = s.substring(temp - condition, temp + condition);
-                }
-            }
-        }
-        return palindrome;
-    }
-
-    static String problemSix(String s) {
-        int length = s.length();
-        int index = 0;
-        String epicness = "";
-        for (int i = 1; i < length; i++) {
-            if (s.charAt(i) != s.charAt(i - 1)) {
-                if (epicness.length() < i - index) {
-                    epicness = s.substring(index, i);
-                }
-                index = i;
-            }
-        }
-        return epicness;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(
-                problemSix("dhtugkmhivrudgnvtioudkjhffjkvmdfvkjxnnkjfvknjvfznkjfvzdkjhnvfjknvfkjnhvfjknvfdjknksdfc"));
     }
 }

@@ -41,18 +41,28 @@ public class Array {
         return changedArray;
     }
 
-    // START COMMENTING
+    // This method inserts a value between 2 values inside an array
     static int[] insert(int[] array, int value, int index) {
+
+        // Gets the size of the array
         int size = array.length;
+
+        // Creates a new array that is 1 larger
         int[] changedArray = new int[size + 1];
         if (index >= 0 && index < size + 1) {
+
+            // Copies over the old array's values
             for (int i = 0; i < index; i++) {
                 changedArray[i] = array[i];
             }
+
+            // Inserts the value into the array
             changedArray[index] = value;
             for (int i = index; i < size; i++) {
                 changedArray[i + 1] = array[i];
             }
+
+            // Returns the array with the inserted value
             return changedArray;
         } else {
             return array;

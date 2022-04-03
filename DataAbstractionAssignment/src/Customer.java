@@ -67,7 +67,7 @@ public class Customer {
         withdraws.add(new Withdraw(amt, date, account));
 
         // If the account is checking, withdraw the money from the checking account
-        if (account == CHECKING) {
+        if (account.equals(CHECKING)) {
 
             // If withdrawing the money doesn't put you under overdraft
             if (checkOverdraft(amt, account)) {
@@ -77,7 +77,7 @@ public class Customer {
                 return 0;
             }
         } // If the account is saving, withdraw the money from the saving account
-        else if (account == SAVING) {
+        else if (account.equals(SAVING)) {
 
             // Checks overdraft
             if (checkOverdraft(amt, account)) {
