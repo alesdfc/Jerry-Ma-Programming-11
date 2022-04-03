@@ -18,6 +18,7 @@ public class App {
         String r = "rock";
         String p = "paper";
         String s = "scissors";
+        String win = "You Win!";
 
         // Translate the user input into either rock paper or scissors to make the
         // result understandable and turns it into a form shared with the computer
@@ -45,11 +46,11 @@ public class App {
         if (computerChoice == choice) {
             System.out.println("Draw!");
         } else if (computerChoice.equals(r) && choice.equals(p)) {
-            System.out.println("You Win!");
+            System.out.println(win);
         } else if (computerChoice.equals(p) && choice.equals(s)) {
-            System.out.println("You Win!");
+            System.out.println(win);
         } else if (computerChoice.equals(s) && choice.equals(r)) {
-            System.out.println("You Win!");
+            System.out.println(win);
         } else { // anything that isn't a tie or a win is a loss
             System.out.println("You Lose!");
         }
