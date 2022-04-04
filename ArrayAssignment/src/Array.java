@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Array {
 
     // This method deletes the last index of an array
-    static int[] deleteBack(int[] array) {
+    static int[] pop(int[] array) {
 
         // Stores the length of the array
         int size = array.length;
@@ -71,8 +71,8 @@ public class Array {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(Arrays.toString(deleteBack(new int[] { 1, 2, 3, 4, 5 })));
+        System.out.println(Arrays.toString(pop(new int[] { 1, 2, 3, 4, 5 })));
         System.out.println(Arrays.toString(add(new int[] { 1, 2, 3, 4, 5 }, 6)));
-        System.out.println(Arrays.toString(insert(new int[] { 1, 2, 3, 4, 5 }, 6, -1)));
+        System.out.println(Arrays.toString(insert(new int[] { 1, 2, 3, 4, 5 }, 6, 2)));
     }
 }
