@@ -26,14 +26,19 @@ public class App {
             int random = (int) (Math.random() * 3);
             String computerChoice = "";
 
+            final String rock = "rock";
+            final String paper = "paper";
+            final String scissors = "scissors";
+            final String winMsg = "You Win!";
+
             // Translate the user input into either rock paper or scissors to make the
             // result understandable and turns it into a form shared with the computer
             if (choice.equals("r")) {
-                choice = "rock";
+                choice = rock;
             } else if (choice.equals("p")) {
-                choice = "paper";
+                choice = paper;
             } else if (choice.equals("s")) {
-                choice = "scissors";
+                choice = scissors;
             } else if (choice.equals("x")) {
                 System.out.println("Thank you for playing!");
                 break;
@@ -44,24 +49,24 @@ public class App {
 
             // Translates the randomly generated numbers 0-2 to turn it into a common form
             if (random == 0) {
-                computerChoice = "rock";
+                computerChoice = rock;
             } else if (random == 1) {
-                computerChoice = "paper";
+                computerChoice = paper;
             } else if (random == 2) {
-                computerChoice = "scissors";
+                computerChoice = scissors;
             }
 
             // Represents all the possible outcomes of the rock paper scissors game
             if (computerChoice == choice) {
                 System.out.println("Draw!");
-            } else if (computerChoice.equals("rock") && choice.equals("paper")) {
-                System.out.println("You Win!");
+            } else if (computerChoice.equals(rock) && choice.equals(paper)) {
+                System.out.println(winMsg);
                 wins++;
-            } else if (computerChoice.equals("paper") && choice.equals("scissors")) {
-                System.out.println("You Win!");
+            } else if (computerChoice.equals(paper) && choice.equals(scissors)) {
+                System.out.println(winMsg);
                 wins++;
-            } else if (computerChoice.equals("scissors") && choice.equals("rock")) {
-                System.out.println("You Win!");
+            } else if (computerChoice.equals(scissors) && choice.equals(rock)) {
+                System.out.println(winMsg);
                 wins++;
             } else { // anything that isn't a tie or a win is a loss
                 System.out.println("You Lose!");
