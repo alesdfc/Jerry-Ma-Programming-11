@@ -14,7 +14,7 @@ public class Teacher {
 
     // Returns the name and subject the teacher has
     public String toString() {
-        return "Name: " + this.firstName + " " + this.lastName + " Subject:" + this.subject;
+        return "Name: " + this.firstName + " " + this.lastName + " Subject: " + this.subject;
     }
 
     // Getters and Setters

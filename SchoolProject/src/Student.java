@@ -6,7 +6,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private int grade;
-    static int identification = 0;
+    private static int identification = 0;
     private int studentId;
 
     // Constructor that makes a student object
@@ -20,7 +20,7 @@ public class Student {
 
     // Gives the full name and grade of a student
     public String toString() {
-        return "Name: " + this.firstName + " " + this.lastName + " Grade:" + this.grade;
+        return "Name: " + this.firstName + " " + this.lastName + " Grade: " + this.grade;
     }
 
     public boolean equals(Object o) {

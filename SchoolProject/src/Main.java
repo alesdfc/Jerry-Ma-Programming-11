@@ -6,7 +6,7 @@ public class Main {
                 "Woggy" };
         int[] grade = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
         String[] subjects = { "Science", "Math", "English", "History" };
-        School school = new School("Testing High", "12758492371");
+        School school = new School("Testing High", "100 Road Avenue");
         for (int i = 0; i < 10; i++) {
             school.addStudent(new Student(firstname[i], lastname[i], grade[i]));
         }

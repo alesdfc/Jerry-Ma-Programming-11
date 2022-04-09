@@ -10,14 +10,15 @@ public class School {
     // Fields for courses
     private String name;
     private String address;
-    private int rating = 0;
+    private int budget = 5000000;
 
-    // Get and set
+    // Constructor
     School(String name, String address) {
         this.name = name;
         this.address = address;
     }
 
+    // Get and set
     public String getName() {
         return name;
     }
@@ -26,8 +27,8 @@ public class School {
         return address;
     }
 
-    public int getRating() {
-        return rating;
+    public int getBudget() {
+        return budget;
     }
 
     public void setName(String name) {
@@ -38,8 +39,8 @@ public class School {
         this.address = address;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     // Adds and deletes teachers from the array list
