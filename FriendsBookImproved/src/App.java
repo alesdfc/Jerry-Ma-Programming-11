@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
 
 public class App extends Application {
     public static void main(String[] args) throws Exception {
@@ -11,8 +12,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("JavaFX.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("friendsbook.fxml"));
+        stage.setTitle("Friend Book");
         stage.setScene(new Scene(root));
         stage.show();
     }
