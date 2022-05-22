@@ -40,6 +40,9 @@ public class SceneController {
     @FXML
     private Button buttonBet;
 
+    // Requires: actionevent from button
+    // Modifies: betPoints, totalPoint
+    // Effects: takes away points from totalpoint to bet
     @FXML
     void confirmBet(ActionEvent event) {
         Integer totalPoint = Integer.parseInt(points.getText());
@@ -57,6 +60,9 @@ public class SceneController {
         bet = Integer.parseInt(bettedPoints.getText());
     }
 
+    // Requires: actionevent from button
+    // Modifies: none
+    // Effects: generates a randomm number from 1-6 to mimic a dice roll
     @FXML
     void reRoll(ActionEvent event) {
 
@@ -69,13 +75,16 @@ public class SceneController {
 
     }
 
+    // Requires: actionEvent
+    // Modifies: none
+    // Effects: stops the ability to reroll and repays the user their points
+    // depending on the total
     @FXML
     void stopRoll(ActionEvent event) {
-        // set buttons to be disabled true
         rollButton.setDisable(true);
         stopButton.setDisable(true);
         rollButton.setText("Roll");
-        // write like 30 if statements and do operations then add onto total
+
         if (total > 21) {
             bet = 0;
         } else if (total == 21) {
@@ -97,7 +106,7 @@ public class SceneController {
         } else if (total < 18) {
             bet = 0;
         }
-        // set betting button to be disabled falses
+
         buttonBet.setDisable(false);
         bettedPoints.clear();
         bettedPoints.setDisable(false);
