@@ -70,8 +70,8 @@ public class SceneController {
     }
 
     // Requires: actionevent from button
-    // Modifies: doesn't even work yet
-    // Effects:doesn't even work yet
+    // Modifies: none
+    // Effects: deletes a friend from the list
     @FXML
     void deleteFriend(ActionEvent event) {
         friendList.getItems().remove(friendList.getSelectionModel().getSelectedIndex());
