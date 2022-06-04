@@ -15,6 +15,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.geometry.Insets;
 import javafx.scene.layout.VBox;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 public class App extends Application {
 
@@ -43,6 +49,8 @@ public class App extends Application {
     private Button smallBoard;
     private Button mediumBoard;
     private Button largeBoard;
+    private Button saveBoard;
+    private Button loadBoard;
 
     // Game States
     private boolean hasWon = false;
@@ -106,6 +114,8 @@ public class App extends Application {
         smallBoard = new Button("Small");
         mediumBoard = new Button("Medium");
         largeBoard = new Button("Large");
+        saveBoard = new Button("Save");
+        loadBoard = new Button("Load");
         time = new Label("0");
 
         // Sets the sizes of the buttons
@@ -115,6 +125,10 @@ public class App extends Application {
         mediumBoard.setMaxSize(70, 30);
         smallBoard.setMaxSize(70, 30);
         smallBoard.setMaxSize(70, 30);
+        saveBoard.setMinSize(70, 30);
+        saveBoard.setMaxSize(70, 30);
+        loadBoard.setMinSize(70, 30);
+        loadBoard.setMaxSize(70, 30);
 
         // Makes the reset button create a new board with the previous size then change
         // the view
@@ -153,10 +167,19 @@ public class App extends Application {
             changeView();
             labelWin.setText("");
         });
+        saveBoard.setOnMouseClicked(e -> {
+            // Saves the boardstate by serializing
+            saveBoard(board);
+        });
+        loadBoard.setOnMouseClicked(e -> {
+            // Loads the boardstate by deseralizing
+            board = loadBoard(board);
+            changeView();
+        });
 
         // Creates HBoxes and VBoxes for organization and appearance
         final HBox data = new HBox(label, reset, time);
-        final VBox sizes = new VBox(smallBoard, mediumBoard, largeBoard);
+        final VBox sizes = new VBox(smallBoard, mediumBoard, largeBoard, saveBoard, loadBoard);
         final HBox gameStatus = new HBox(labelWin);
 
         // Updates the timer every second
@@ -209,10 +232,10 @@ public class App extends Application {
 
         // Displays a win/lose message depending on the current state of the game
         if (hasWon) {
-            labelWin.setText("YOU WIN!!!!!!");
+            labelWin.setText("YOU WON! CONGRATULATIONS");
         }
         if (hasLost) {
-            labelWin.setText("YOU LOSE DUMBO");
+            labelWin.setText("YOU LOST! TRY AGAIN!");
         }
     }
 
@@ -226,32 +249,32 @@ public class App extends Application {
 
         // Checks the board to see what the state of that tile is
         switch (board.getTileBoard()[row][column]) {
-        case FLAGWRONG:
-            if (hasLost) {
-                button.setGraphic(resize(bombWrong));
-            } else {
+            case FLAGWRONG:
+                if (hasLost) {
+                    button.setGraphic(resize(bombWrong));
+                } else {
+                    button.setGraphic(resize(flag));
+                }
+                break;
+            case FLAGRIGHT:
                 button.setGraphic(resize(flag));
-            }
-            break;
-        case FLAGRIGHT:
-            button.setGraphic(resize(flag));
-            break;
-        case NUMBERNOTCLICKED:
-            button.setGraphic(resize(blockUnclicked));
-            break;
-        case MINENOTCLICKED:
-            if (hasLost || hasWon) {
-                button.setGraphic(resize(bomb));
-            } else {
+                break;
+            case NUMBERNOTCLICKED:
                 button.setGraphic(resize(blockUnclicked));
-            }
-            break;
-        case MINECLICKED:
-            button.setGraphic(resize(bombClicked));
-            break;
-        case NUMBERCLICKED:
-            button.setGraphic(resize(numsImage[board.getIntBoard()[row][column]]));
-            break;
+                break;
+            case MINENOTCLICKED:
+                if (hasLost || hasWon) {
+                    button.setGraphic(resize(bomb));
+                } else {
+                    button.setGraphic(resize(blockUnclicked));
+                }
+                break;
+            case MINECLICKED:
+                button.setGraphic(resize(bombClicked));
+                break;
+            case NUMBERCLICKED:
+                button.setGraphic(resize(numsImage[board.getIntBoard()[row][column]]));
+                break;
         }
 
         // Not reached an ending state
@@ -267,5 +290,36 @@ public class App extends Application {
             });
         }
         return button;
+    }
+
+    // Saves the current boardstate by serializing the board in a .ser file
+    public void saveBoard(Board board) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("BoardSave.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(board);
+            out.close();
+            fileOut.close();
+            System.out.println("Serialized data is saved in /Minesweeper/BoardSave.ser");
+        } catch (IOException hello) {
+            System.out.println("we got an IOException on our hands");
+        }
+    }
+
+    // Returns the new board after reading from the boardsave.ser file
+    public Board loadBoard(Board board) {
+        try {
+            FileInputStream fileIn = new FileInputStream("BoardSave.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            board = (Board) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("Ayo this thing should've loaded");
+            return board;
+        } catch (IOException i) {
+        } catch (ClassNotFoundException c) {
+            System.out.println("Board class not found");
+        }
+        return board;
     }
 }

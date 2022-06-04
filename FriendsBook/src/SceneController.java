@@ -70,7 +70,7 @@ public class SceneController {
     }
 
     // Requires: actionevent from button
-    // Modifies: none
+    // Modifies: display text
     // Effects: deletes a friend from the list
     @FXML
     void deleteFriend(ActionEvent event) {

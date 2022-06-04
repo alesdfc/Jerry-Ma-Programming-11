@@ -1,4 +1,4 @@
-public class Board {
+public class Board implements java.io.Serializable {
     enum tileTypes {
         FLAGRIGHT, FLAGWRONG, MINECLICKED, MINENOTCLICKED, NUMBERCLICKED, NUMBERNOTCLICKED, NOTVALID
     }

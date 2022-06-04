@@ -40,9 +40,9 @@ public class SceneController {
     @FXML
     private Button buttonBet;
 
-    // Requires: actionevent from button
+    // Requires: action event from button
     // Modifies: betPoints, totalPoint
-    // Effects: takes away points from totalpoint to bet
+    // Effects: takes away points from total point to bet
     @FXML
     void confirmBet(ActionEvent event) {
         Integer totalPoint = Integer.parseInt(points.getText());
@@ -60,9 +60,9 @@ public class SceneController {
         bet = Integer.parseInt(bettedPoints.getText());
     }
 
-    // Requires: actionevent from button
+    // Requires: action event from button
     // Modifies: none
-    // Effects: generates a randomm number from 1-6 to mimic a dice roll
+    // Effects: generates a random number from 1-6 to mimic a dice roll
     @FXML
     void reRoll(ActionEvent event) {
 
